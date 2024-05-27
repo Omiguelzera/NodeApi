@@ -8,11 +8,27 @@ async function getUsers(request, response){
 }
 
 async function createUsers(request, response){
-    const user = request.body
+   try {
     
-    const newUser = await Users.create(user)
+       const { nome } = request.body
+    
+    if(!nome){
 
-    return response.status(201).json(newUser)
+        response.status(422).json({error : 'Nome é obrigatório!'})
+        return 
+    }
+        
+            const user = request.body
+                    
+            const newUser = await Users.create(user)
+
+            return response.status(201).json(newUser)
+
+       
+    } catch (error) {
+        response.status(400).json({message: error.message})
+    }
+
 }
 
 async function deleteUser(request, response){
