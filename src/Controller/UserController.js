@@ -1,7 +1,7 @@
 
 import Users from "../Models/Users.js";
 
-
+//buscar todos os usuarios
 async function getUsers(request, response){
     try {
         
@@ -16,6 +16,7 @@ async function getUsers(request, response){
    
 }
 
+//criar novo usuario
 async function createUsers(request, response){
    try {
 
@@ -40,6 +41,7 @@ async function createUsers(request, response){
 
 }
 
+//deletat usuario
 async function deleteUser(request, response){
     const id = request.params.id
     
@@ -48,6 +50,8 @@ async function deleteUser(request, response){
     return response.status(200).json({ response : "User deletado"})
 }
 
+
+//procurar por id
 async function findById(request, response){
     const id = request.params.id
     
@@ -70,6 +74,8 @@ async function findById(request, response){
    
 }
 
+
+//alterar usuario, puxando os dados por id
 async function alterarUser(request, response){
     const id = request.params.id
 
